@@ -23,10 +23,13 @@ TEST_F(BasketTests, When_AddedOneBook_Expect_BookCounterHasOneBook)
     EXPECT_EQ(basketTested.getBooksCounter().at("1"), 1);
 }
 
-// TEST_F(BasketTests, When_Add5BookOneType_Expect_TotalPriceIsEqualForty)
-// {
-//     for (auto const& m : basketTested.getBooksCounter())
-//     {
-//         EXPECT_EQ(basketTested.getTotalPrice(), 40);
-//     }
-// }
+TEST_F(BasketTests, When_Add5BookOneType_Expect_TotalPriceIsEqualForty)
+{
+    basketTested.addBook("1");
+    basketTested.addBook("1");
+    basketTested.addBook("1");
+    basketTested.addBook("1");
+    basketTested.addBook("1");
+
+    EXPECT_EQ(basketTested.getTotalPrice(), 40);
+}

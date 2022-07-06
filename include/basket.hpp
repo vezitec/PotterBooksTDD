@@ -8,10 +8,15 @@ public:
     Basket(std::map<std::string, int>);
     Basket();
 
-    // methods
+    //methods
+    //getters
     std::map<std::string, int> getBooksCounter();
-    void addBook(std::string);
+    float getTotalPrice();
 
+    //setters
+    void addBook(std::string);
+    
 private:
     std::map<std::string, int> m_booksCounter;
+    float m_TotalPrice{};
 };
