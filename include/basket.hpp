@@ -15,6 +15,7 @@ public:
 
     //setters
     void addBook(std::string);
+    void addBook(std::string,int);
     
 private:
     std::map<std::string, int> m_booksCounter;

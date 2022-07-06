@@ -33,3 +33,25 @@ TEST_F(BasketTests, When_Add5BookOneType_Expect_TotalPriceIsEqualForty)
 
     EXPECT_EQ(basketTested.getTotalPrice(), 40);
 }
+
+TEST_F(BasketTests, When_Added5BookDiffType_TotalPrice_Should_BeEqualThirty)
+{
+    basketTested.addBook("1");
+    basketTested.addBook("2");
+    basketTested.addBook("3");
+    basketTested.addBook("4");
+    basketTested.addBook("5");
+
+    EXPECT_EQ(basketTested.getTotalPrice(), 30);
+}
+
+TEST_F(BasketTests, When_AddedTwoSetsOfFiveBooksDiffType_TotalPrice_Should_BeEqualSixty)
+{
+    basketTested.addBook("1",2);
+    basketTested.addBook("2",2);
+    basketTested.addBook("3",2);
+    basketTested.addBook("4",2);
+    basketTested.addBook("5",2);
+
+    EXPECT_EQ(basketTested.getTotalPrice(), 60);
+}

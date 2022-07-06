@@ -14,6 +14,10 @@ void Basket::addBook(std::string bookName)
 {
     m_booksCounter.at(bookName)++;
 }
+void Basket::addBook(std::string bookName, int count)
+{
+    m_booksCounter.at(bookName) +=count;
+}
 
 float Basket::getTotalPrice()
 {
