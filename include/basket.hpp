@@ -10,6 +10,7 @@ public:
 
     // methods
     std::map<std::string, int> getBooksCounter();
+    void addBook(std::string);
 
 private:
     std::map<std::string, int> m_booksCounter;
