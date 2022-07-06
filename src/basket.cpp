@@ -16,7 +16,7 @@ void Basket::addBook(std::string bookName)
 }
 void Basket::addBook(std::string bookName, int count)
 {
-    m_booksCounter.at(bookName) +=count;
+    m_booksCounter.at(bookName) += count;
 }
 
 float Basket::getTotalPrice()
@@ -38,19 +38,24 @@ float Basket::getTotalPrice()
         switch (bookSetSize)
         {
         case 5:
-            m_TotalPrice+=40*0.75;
+            setCounter[4]++;
+            m_TotalPrice += 40 * 0.75;
             break;
         case 4:
-            m_TotalPrice+=32*0.8;
+            setCounter[3]++;
+            m_TotalPrice += 32 * 0.8;
             break;
         case 3:
-            m_TotalPrice+=24*0.9;
+            setCounter[2]++;
+            m_TotalPrice += 24 * 0.9;
             break;
         case 2:
-            m_TotalPrice+=16*0.95;
+            setCounter[1]++;
+            m_TotalPrice += 16 * 0.95;
             break;
         case 1:
-            m_TotalPrice+=8*1;
+            setCounter[0]++;
+            m_TotalPrice += 8 * 1;
             break;
         case 0:
             notEmpty = false;
@@ -61,5 +66,22 @@ float Basket::getTotalPrice()
         }
     }
 
+    optimizePrice();
     return m_TotalPrice;
+}
+
+void Basket::optimizePrice()
+{
+    while (setCounter[4]>0 && setCounter[2]>0 )
+    {
+        setCounter[3] += 2;
+        setCounter[4]--;
+        setCounter[2]--;
+    }
+
+    m_TotalPrice =  setCounter[0] * 8 * 1 * 1.00 + 
+                    setCounter[1] * 8 * 2 * 0.95 +
+                    setCounter[2] * 8 * 3 * 0.90 +
+                    setCounter[3] * 8 * 4 * 0.80 +
+                    setCounter[4] * 8 * 5 * 0.75;
 }

@@ -23,7 +23,7 @@ TEST_F(BasketTests, When_AddedOneBook_Expect_BookCounterHasOneBook)
     EXPECT_EQ(basketTested.getBooksCounter().at("1"), 1);
 }
 
-TEST_F(BasketTests, When_Add5BookOneType_Expect_TotalPriceIsEqualForty)
+TEST_F(BasketTests, When_AddFiveBookOneType_Expect_TotalPriceIsEqualForty)
 {
     basketTested.addBook("1");
     basketTested.addBook("1");
@@ -34,7 +34,7 @@ TEST_F(BasketTests, When_Add5BookOneType_Expect_TotalPriceIsEqualForty)
     EXPECT_EQ(basketTested.getTotalPrice(), 40);
 }
 
-TEST_F(BasketTests, When_Added5BookDiffType_TotalPrice_Should_BeEqualThirty)
+TEST_F(BasketTests, When_AddedFiveBookDiffType_TotalPrice_Should_BeEqualThirty)
 {
     basketTested.addBook("1");
     basketTested.addBook("2");
@@ -47,11 +47,22 @@ TEST_F(BasketTests, When_Added5BookDiffType_TotalPrice_Should_BeEqualThirty)
 
 TEST_F(BasketTests, When_AddedTwoSetsOfFiveBooksDiffType_TotalPrice_Should_BeEqualSixty)
 {
-    basketTested.addBook("1",2);
-    basketTested.addBook("2",2);
-    basketTested.addBook("3",2);
-    basketTested.addBook("4",2);
-    basketTested.addBook("5",2);
+    basketTested.addBook("1", 2);
+    basketTested.addBook("2", 2);
+    basketTested.addBook("3", 2);
+    basketTested.addBook("4", 2);
+    basketTested.addBook("5", 2);
 
     EXPECT_EQ(basketTested.getTotalPrice(), 60);
+}
+
+TEST_F(BasketTests, When_AddedSetsOfBooks_Expect_TotalPrice_IsEqual_CorrectValue)
+{
+    basketTested.addBook("1", 2);
+    basketTested.addBook("2", 2);
+    basketTested.addBook("3", 2);
+    basketTested.addBook("4", 1);
+    basketTested.addBook("5", 1);
+
+    EXPECT_FLOAT_EQ(basketTested.getTotalPrice(), 51.2);
 }
